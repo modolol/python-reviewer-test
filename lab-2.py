@@ -1,4 +1,5 @@
-operations_count = 0
+import logging
+import config
 
 def main():
     ask_again = True
@@ -18,10 +19,11 @@ def main():
 def perform_division(a,b):
     global operations_count
     try:
-        operations_count += 1
+        config.operations_count += 1
         return int(a)/int(b)
-    except Exception as e:
-        pass
+
+    except ZeroDivisionError as e:
+        logging.exception("ZeroDivisionError: %s", e)
 
 
 main()
